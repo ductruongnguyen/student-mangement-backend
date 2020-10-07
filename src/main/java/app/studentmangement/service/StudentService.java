@@ -11,4 +11,5 @@ public interface StudentService {
     void deleteById(Long id);
     Optional<Student> findById(Long id);
     List<Student> findByName(String keyword);
+    boolean existByStudentCode(String stdCode);
 }

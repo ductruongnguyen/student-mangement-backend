@@ -38,4 +38,9 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findByName(String keyword) {
         return studentRepository.findByNameContaining(keyword);
     }
+
+    @Override
+    public boolean existByStudentCode(String stdCode) {
+        return studentRepository.existsStudentByStudentCode(stdCode);
+    }
 }

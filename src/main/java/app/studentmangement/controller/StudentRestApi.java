@@ -23,6 +23,12 @@ public class StudentRestApi {
 
     @PostMapping(value = "/insert", consumes = "application/json")
     public ResponseEntity<Student> insertStudent(@RequestBody Student student) {
+        System.out.println(student);
+        boolean check = studentService.existByStudentCode(student.getStudentCode());
+        if(check) {
+            System.out.println("Code: " + student.getStudentCode() + " is duplicated!");
+            return new ResponseEntity<Student>(HttpStatus.NOT_FOUND);
+        }
         studentService.save(student);
         return new ResponseEntity<Student>(HttpStatus.OK);
     }
